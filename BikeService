@@ -1,0 +1,19 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract BikeService {
+    uint256 public minDistance = 500;
+    uint256 public oilAndTierThreshold = 2000;
+    uint256 public engineReboreThreshold = 4000;
+
+    function serviceBike(uint256 _distance) public view {
+        assert(_distance >= minDistance);
+        require(_distance <= oilAndTierThreshold, "Oil and tire should be replaced");
+
+    }
+    function checkEngineRebore(uint256 _distance) public view {
+        if (_distance > engineReboreThreshold) {
+            revert("Engine should be rebored");
+        }
+    }
+}
